@@ -13,6 +13,7 @@ public class App {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext(new String[]{"application-consumer.xml"});
         context.start();
+
         IPayInterface payService = (IPayInterface) context.getBean("payService");
         String result = payService.pay();
         System.out.println(result);
