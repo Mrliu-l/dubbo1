@@ -8,11 +8,14 @@
     <!-- provider's application name, used for tracing dependency relationship -->
     <dubbo:application name="pay-provider"/>
     <!-- use multicast registry center to export service -->
-    <dubbo:registry address="zookeeper://39.106.19.2:2181"/>
+    <dubbo:registry id="zk1" address="zookeeper://39.106.19.2:2181"/>
     <!-- use dubbo protocol to export service on port 20880 -->
     <dubbo:protocol name="dubbo" port="20880"/>
     <!-- service implementation, as same as regular local bean -->
     <bean id="payService" class="com.self.PayServiceImpl"/>
     <!-- declare the service interface to be exported -->
-    <dubbo:service interface="com.self.IPayInterface" ref="payService"/>
+    <dubbo:service interface="com.self.IPayInterface" ref="payService" registry="zk1" />
+
+    <!-- 验证多协议支持 -->
+    <dubbo:protocol name="webservice" port="8080"/>
 </beans>
