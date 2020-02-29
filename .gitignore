@@ -1,0 +1,3 @@
+# Project exclude paths
+/pay-interface/target/
+/pay-paovider/target/
